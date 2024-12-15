@@ -1,0 +1,74 @@
+PROBLEM:
+
+QUESTION 1: 
+As a senior backend engineer at Jovian, you are tasked with developing a fast in-memory data structure to manage profile information (username, name and email) for 100 million users. It should allow the following operations to be performed efficiently:
+- Insert the profile information for a new user.
+- Find the profile information of a user, given their username
+- Update the profile information of a user, given their usrname
+- List all the users of the platform, sorted by username
+
+You can assume that usernames are unique.
+
+
+MY MATT HINT:
+
+# THIS ONE IS THE INPUT THAT REPRESENT THE USER by CREATING "CLASS"...
+class User:
+    # "__init__" is a 'constructor' that we always use it.
+    def __init__(self,username,name,email):
+	self.username = username
+	self.name = name
+	self.email = email
+    def __repr__(self):
+	return "User(username='{}', name='{}', email='{}')".format(self.username, self.name, self.email)
+    def __str__(self):
+	return self.__repr__()
+
+## these two functions(__repr__ and __str__) are used to create a "string representation of the object".
+
+# NEXT WE CAN CREATE DATASTRUCTURE...FOR WHAT PURPOSE?....TO DO THE LOGIC AFTER GETTING/REPRESENTING USERS
+class UserDatabase:
+    def insert(self, user):
+	pass
+    def find(self):
+	pass
+    def update(self, user):
+	pass
+    def list_all(self):
+	pass
+
+
+# THE SCENARIOS WILL CONSIDERS....'INSERT', 'FIND', 'UPDATE', 'LIST'
+i.e, INSERT:
+	A. inserting into an empty database of users
+	B. Trying to insert a user with ausername that already exists
+	C. Inserting a user with a username that does not exist
+	D. ...
+
+
+NOTE THAT(BRUTE FORCE):
+- THE `TIME COMPLEXITY` FOR THIS SCENARIO WILL BE LIKE THIS:
+    - INSERT: O(N)
+    - FIND: O(N)
+    - UPDATE: O(N)
+    - LIST: O(1)
+- THE SPACE COMPLEXITY FOR EACH OPERATION IS O(1)
+
+NOTE THAT(Using `BST`):
+- THE `TIME COMPLEXITY` FOR THIS SCENARIO WILL BE LIKE THIS:
+    - INSERT: O(log N)
+    - FIND: O(log N)
+    - UPDATE: O(log N)
+    - LIST: O(N)
+- THE SPACE COMPLEXITY FOR EACH OPERATION IS O(1)
+
+# BBST ... Balanced Binary Search Tree
+NOTE THAT(Using `BBST`):
+- Complexity of the various operations in a balanced BST:
+	- Insert - O(log N) + O(N) = O(N)
+	- Find - O(log N)
+	- Update - O(log N)
+	- List all - O(N)
+
+## find and update from a balanced binary search tree is `300,000` times faster than our original solution.
+
